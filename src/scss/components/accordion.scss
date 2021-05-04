@@ -1,0 +1,228 @@
+.accordion {
+  &__item {
+    background: #FFFFFF;
+    padding: 0 20px;
+
+    & + & {
+      margin-top: 12px;
+    }
+
+    &.active {
+      .accordion__content {
+        display: block;
+      }
+
+      .accordion__header {
+        border-bottom: 2px #F3F3F3 solid;
+
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__header {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 76px;
+    height: 76px;
+    color: #000000;
+    position: relative;
+    border-top: 2px transparent solid;
+    border-bottom: 2px transparent solid;
+    transition: all .2s ease;
+
+    &:after {
+      transition: all .2s ease;
+      position: absolute;
+      right: 0;
+      top: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' fill='white'/%3E%3Crect x='18' y='8' width='4' height='24' fill='%2303A65A'/%3E%3Crect x='32' y='18' width='4' height='24' transform='rotate(90 32 18)' fill='%2303A65A'/%3E%3C/svg%3E%0A");
+      width: 40px;
+      height: 40px;
+      content: '';
+      transform-origin: 50%;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 20px;
+      line-height: 72px;
+
+      &:after {
+        top: 18px;
+      }
+    }
+  }
+
+  &__content {
+    display: none;
+    padding-bottom: 32px;
+  }
+
+  &__title {
+    padding-top: 32px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    color: #222222;
+
+    @media (max-width: 1024px) {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+
+  &__text {
+    max-width: 800px;
+    padding-top: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #222222;
+    opacity: 0.7;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__list {
+    padding-top: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #222222;
+    opacity: 0.7;
+  }
+
+  &__btn {
+    margin-top: 32px;
+  }
+}
+
+.accordion-modal {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  position: fixed;
+  max-width: 820px;
+  width: calc(100% - 60px);
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background: #F9F9F9;
+  padding: 40px 60px 50px;
+  visibility: hidden;
+
+  @media (max-width: 768px) {
+    padding: 40px 16px 50px;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+
+    + .accordion-modal-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.00008 8.41429L12.293 13.7072L13.7072 12.293L8.41429 7.00008L13.7072 1.70718L12.293 0.292969L7.00008 5.58586L1.70718 0.292969L0.292969 1.70718L5.58586 7.00008L0.292969 12.293L1.70718 13.7072L7.00008 8.41429Z' fill='%23222222'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .7;
+    transition: opacity .2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    color: #222222;
+
+    @media (max-width: 1024px) {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+
+  &__text {
+    margin-top: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #222222;
+    opacity: 0.7;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__form{
+    margin-top: 32px;
+  }
+
+  &__input{
+    @media (max-width: 1024px) {
+      padding: 13px 16px;
+    }
+    & + &{
+      margin-top: 16px;
+    }
+  }
+
+  &__textarea{
+    margin-top: 16px;
+
+    @media (max-width: 1024px) {
+      padding: 13px 16px;
+    }
+  }
+
+  &__form-file-label-text{
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__submit{
+    width: auto;
+    margin: 0;
+  }
+}
+
+.accordion-modal-overlay {
+  position: fixed;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.35);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .2s ease;
+}

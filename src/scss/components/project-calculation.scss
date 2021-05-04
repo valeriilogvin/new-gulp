@@ -1,0 +1,26 @@
+.project-calculation{
+  &__img-block {
+    height: 360px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -230px;
+
+    @media (max-width: 1280px) {
+      background-position-y: -150px;
+    }
+
+    @media (max-width: 1024px) {
+      background-position-y: -100px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 50% 0;
+      background-position-y: 0;
+      height: auto;
+    }
+  }
+
+  &__btn{
+    margin-top: 32px;
+  }
+}

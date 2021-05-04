@@ -1,0 +1,244 @@
+.hero {
+  //background-image: url(../img/main-bg.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 60px;
+
+  .container {
+    width: 100%;
+    max-width: 1660px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 1600px) {
+      width: 1200px;
+    }
+
+    @media (max-width: 1600px) {
+      width: 1200px;
+    }
+
+    @media (max-width: 1280px) {
+      width: 960px;
+    }
+
+    @media (max-width: 1024px) {
+      width: 700px;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      max-width: 375px;
+      padding: 0 16px;
+      margin: 0 auto;
+      position: relative;
+    }
+  }
+
+  &__text-wrapper {
+    max-width: 730px;
+    padding: 200px 0;
+
+    @media (max-width: 1600px) {
+      max-width: 530px;
+      padding: 160px 0;
+    }
+
+    @media (max-width: 1600px) {
+      padding: 100px 0;
+    }
+
+    @media (max-width: 1024px) {
+      max-width: 340px;
+      padding: 55px 0;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      width: 100%;
+      padding: 150px 0 32px;
+    }
+  }
+
+  &__title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 144px;
+    line-height: 90%;
+    color: #fff;
+    position: relative;
+    padding-bottom: 30px;
+
+    @media (max-width: 1600px) {
+      font-size: 100px;
+    }
+
+    @media (max-width: 1366px) {
+      font-size: 80px;
+    }
+
+    @media (max-width: 1280px) {
+      font-size: 70px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 48px;
+      padding-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 36px;
+      max-width: 200px;
+    }
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 280px;
+      height: 2px;
+      background: $color-green;
+      content: '';
+
+      @media (max-width: 768px) {
+        max-width: 200px;
+      }
+    }
+  }
+
+  &__subtitle {
+    padding-top: 30px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    color: #fff;
+
+    @media (max-width: 1600px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 22px;
+      padding-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 19px;
+      max-width: 200px;
+    }
+  }
+
+  &__btn {
+    margin-top: 48px;
+
+    @media (max-width: 1024px) {
+      margin-top: 24px;
+    }
+  }
+
+  &__video {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  &__video-overlay {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.36) 0%, rgba(0, 0, 0, 0) 98.85%);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__video-btn {
+    margin-right: 330px;
+    width: 160px;
+    height: 160px;
+    position: relative;
+    z-index: 1;
+    fill: #fff;
+    cursor: pointer;
+
+    @media (max-width: 1600px) {
+      margin-right: 130px;
+    }
+
+    @media (max-width: 1024px) {
+      width: 95px;
+      height: 95px;
+      margin-right: 110px;
+    }
+
+    @media (max-width: 768px) {
+      width: 60px;
+      height: 60px;
+      margin-right: 0;
+      position: absolute;
+      top: auto;
+      bottom: 115px;
+      right: 16px;
+      fill: #fff;
+    }
+
+    &:hover {
+      &:before {
+        transform: scale(1.2);
+      }
+    }
+
+    &:before {
+      margin: 15px;
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      z-index: -1;
+      transition: transform .2s ease;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      content: '';
+
+      @media (max-width: 1024px) {
+        margin: 10px;
+        width: 70px;
+        height: 70px;
+        border: 3px solid #fff;
+      }
+
+      @media (max-width: 768px) {
+        margin: 5px;
+        width: 45px;
+        height: 45px;
+        border: 2px solid #fff;
+        background: none;
+      }
+    }
+
+    .path-play {
+      opacity: 0;
+    }
+
+    &.active {
+      .path-pause {
+        opacity: 0;
+      }
+
+      .path-play {
+        opacity: 1;
+      }
+    }
+  }
+}

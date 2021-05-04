@@ -1,0 +1,43 @@
+.subscription{
+  &__form{
+    display: flex;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__input{
+
+    @media (max-width: 1024px) {
+      padding: 13px 16px;
+    }
+
+    & + &{
+      margin-top: 0;
+      margin-left: 40px;
+
+      @media (max-width: 1024px) {
+        margin-top: 0;
+        margin-left: 16px;
+      }
+      @media (max-width: 768px) {
+        margin-top: 16px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__submit{
+    margin: 0 0 0 40px;
+
+    @media (max-width: 1024px) {
+      margin-left: 16px;
+    }
+
+    @media (max-width: 768px) {
+      margin-top: 16px;
+      margin-left: 0;
+    }
+  }
+}

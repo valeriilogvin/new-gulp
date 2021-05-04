@@ -1,0 +1,44 @@
+.navigation{
+  position: fixed;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity .2s ease, visibility .2s ease;
+  opacity: 0;
+  visibility: hidden;
+
+  @media (max-width: 1366px) {
+    left: 30px;
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  &.show{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item {
+    width: 12px;
+    height: 12px;
+    background: #C4C4C4;
+    border-radius: 50%;
+    margin: 8px 3px;
+    transition: all .2s ease;
+
+    &.active{
+      margin: 5px 0;
+      background: #03A65A;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

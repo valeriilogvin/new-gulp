@@ -1,0 +1,49 @@
+.team{
+  &__inner{
+    @media (max-width: 768px) {
+      margin: -8px 0;
+    }
+  }
+
+  &__item{
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 8px 0;
+    }
+  }
+
+  &__bg{
+    height: 320px;
+    position: relative;
+
+    &--first{
+      background: linear-gradient(90deg, #1D976C 0%, #93F9B9 100%);
+    }
+    &--second{
+      background: linear-gradient(90deg, #4776E6 0%, #8E54E9 100%);
+    }
+  }
+
+  &__img{
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+  }
+
+  &__name{
+    padding-top: 16px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  &__position{
+    padding-top: 2px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    opacity: 0.7;
+  }
+}

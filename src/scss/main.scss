@@ -1,0 +1,41 @@
+@import "fonts";
+@import "resetcss";
+@import "variables";
+
+/* global-style */
+@import "global";
+@import "typography";
+@import "slick";
+/* global-style : end */
+
+/* styles of templates */
+@import "components/header";
+@import "components/hero";
+@import "components/services";
+@import "components/tabs";
+@import "components/technologies";
+@import "components/advantages";
+@import "components/values";
+@import "components/clients";
+@import "components/reviews";
+@import "components/contact-form";
+@import "components/form";
+@import "components/footer";
+@import "components/burger-menu";
+@import "components/navigations";
+@import "components/project-calculation";
+@import "components/cases";
+@import "components/gallery";
+@import "components/used-technology";
+@import "components/vacancies";
+@import "components/accordion";
+@import "components/team";
+@import "components/info";
+@import "components/subscription";
+@import "components/policy";
+/* styles of templates : end */
+
+/* archive */
+@import "components/archive";
+
+@import "animations";

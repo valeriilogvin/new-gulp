@@ -1,0 +1,20 @@
+.info{
+  & + &{
+    padding-top: 0;
+  }
+
+  &__paragraph{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    opacity: 0.7;
+    max-width: 800px;
+    padding-bottom: 32px;
+  }
+
+  &__img{
+    width: 100%;
+    height: auto;
+  }
+}

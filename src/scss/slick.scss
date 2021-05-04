@@ -1,0 +1,54 @@
+.slick-slider{
+  padding-bottom: 82px;
+}
+
+.slider-arrow{
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  background: $color-green;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+
+  @media (max-width: 1024px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  svg{
+    stroke: white;
+    width: 9px;
+    height: 15px;
+  }
+
+  &:hover{
+    background: #D3D3D3;
+    svg{
+      stroke: #222222
+    }
+  }
+}
+
+.slider-arrow--prev{
+  left: 0;
+}
+
+.slider-arrow--next{
+  left: 75px;
+
+  @media (max-width: 1024px) {
+    left: 56px;
+  }
+}
+
+.slick-slide {
+  outline: none;
+}

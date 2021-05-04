@@ -1,0 +1,27 @@
+.contact-form {
+  .flex-row{
+    @media (max-width: 768px) {
+      margin: 0;
+    }
+  }
+
+  .flex-row--6{
+    &:first-child{
+      @media (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+      }
+    }
+    &:last-child{
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  &__img-block {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
