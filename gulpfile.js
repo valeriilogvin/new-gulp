@@ -38,8 +38,8 @@ const styles = () => {
         .pipe(scss().on('error', scss.logError))
         .pipe(preFixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
         .pipe(combineMedia())
-        .pipe(cssnano())
-        .pipe(rename({suffix: '.min'}))
+        // .pipe(cssnano())
+        // .pipe(rename({suffix: '.min'}))
         .pipe(dest("dist/css"))
         .pipe(reload({stream: true}));
 };
@@ -88,7 +88,7 @@ const img = () => {
 };
 exports.img = img;
 
-/////////////////////============SERVER||CLEAN=============/////////////////////
+/////////////////////============SERVER=============/////////////////////
 const server = () => {
     browserSync.init({
         server: {
@@ -96,7 +96,11 @@ const server = () => {
         },
         notify: false
     },)
+};
+exports.server = server;
 
+/////////////////////============watcher=============/////////////////////
+const watcher = () => {
     watch("src/*.html").on('change', series(html));
     watch("src/templates/*.html").on('change', series(htmlTemplates, html));
     watch("src/scss/**/*.+(scss|sass)").on('change', series(styles));
@@ -108,8 +112,9 @@ const server = () => {
     watch("src/fonts/**/*").on('change', series(fonts));
     watch("src/img/**/*").on('change', series(img));
 };
-exports.server = server;
+exports.watcher = watcher;
 
+/////////////////////============CLEAN=============/////////////////////
 const clean = async () => {
     return del.sync('dist');
 };
@@ -124,6 +129,7 @@ exports.default = series(
 exports.dev = series(
     clean,
     parallel(html, htmlTemplates, styles, styleLib, fonts, img, scripts, scriptLib),
-    server
+    server,
+    watcher
 );
 
