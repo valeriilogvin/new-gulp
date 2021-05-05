@@ -115,7 +115,7 @@ exports.server = server;
 * */
 const watcher = async () => {
     watch("src/*.html").on('change', series(html));
-    watch("src/templates/*.html").on('change', series(html));
+    watch("src/templates/**/*.html").on('change', series(html));
     watch("src/scss/**/*.+(scss|sass)").on('change', series(styles));
     watch("src/js/**/*.js").on('change', series(scripts));
 
