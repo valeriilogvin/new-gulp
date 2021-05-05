@@ -13,26 +13,22 @@ const browserSync = require('browser-sync'),
     uglify = require('gulp-uglifyjs'),
     rename = require('gulp-rename');
 
-///////////////////////============HTML=============///////////////////////
+
+/*
+* HTML
+* */
 const html = () => {
     return src("src/*.html")
         .pipe(rigger())
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin({collapseWhitespace: false}))
         .pipe(dest("dist/"))
         .pipe(reload({stream: true}));
 };
 exports.html = html;
 
-const htmlTemplates = () => {
-    return src("src/templates/*.html")
-        .pipe(rigger())
-        .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(dest("dist/templates/"))
-        .pipe(reload({stream: true}));
-};
-exports.htmlTemplates = htmlTemplates;
-
-///////////////////////============CSS=============///////////////////////
+/*
+* CSS
+* */
 const styles = () => {
     return src("src/scss/main.scss")
         .pipe(scss().on('error', scss.logError))
@@ -45,7 +41,9 @@ const styles = () => {
 };
 exports.styles = styles;
 
-///////////////////////============JS=============///////////////////////
+/*
+* JS
+* */
 const scripts = () => {
     return src("src/js/**/*.js")
         .pipe(rigger())
@@ -54,7 +52,9 @@ const scripts = () => {
 };
 exports.scripts = scripts;
 
-///////////////////////============LIBS=============///////////////////////
+/*
+* libs
+* */
 const styleLib = () => {
     return src("src/libs/css/**/*.css")
         .pipe(cssnano())
@@ -73,7 +73,9 @@ const scriptLib = () => {
 };
 exports.scriptLib = scriptLib;
 
-/////////////////////============FONTS||IMG=============/////////////////////
+/*
+* fonts & img
+* */
 const fonts = () => {
     return src("src/fonts/**/*")
         .pipe(dest("dist/fonts"))
@@ -88,7 +90,16 @@ const img = () => {
 };
 exports.img = img;
 
-/////////////////////============SERVER=============/////////////////////
+/*
+* clean
+* */
+const clean = async () => {
+    return del.sync('dist');
+};
+
+/*
+* server
+* */
 const server = () => {
     browserSync.init({
         server: {
@@ -99,10 +110,12 @@ const server = () => {
 };
 exports.server = server;
 
-/////////////////////============watcher=============/////////////////////
-const watcher = () => {
+/*
+* watcher
+* */
+const watcher = async () => {
     watch("src/*.html").on('change', series(html));
-    watch("src/templates/*.html").on('change', series(htmlTemplates, html));
+    watch("src/templates/*.html").on('change', series(html));
     watch("src/scss/**/*.+(scss|sass)").on('change', series(styles));
     watch("src/js/**/*.js").on('change', series(scripts));
 
@@ -114,22 +127,18 @@ const watcher = () => {
 };
 exports.watcher = watcher;
 
-/////////////////////============CLEAN=============/////////////////////
-const clean = async () => {
-    return del.sync('dist');
-};
-
-/////////////////////============LAUNCH_GULP=============/////////////////////
-exports.default = series(
+/*
+* run
+* */
+exports.prod = series(
     clean,
-    parallel(html, htmlTemplates, styles, styleLib, fonts, img, scripts, scriptLib),
-    server
-);
+    parallel(html, styles, styleLib, fonts, img, scripts, scriptLib),
+)
 
 exports.dev = series(
     clean,
-    parallel(html, htmlTemplates, styles, styleLib, fonts, img, scripts, scriptLib),
-    server,
-    watcher
+    parallel(html, styles, styleLib, fonts, img, scripts, scriptLib),
+    watcher,
+    server
 );
 
