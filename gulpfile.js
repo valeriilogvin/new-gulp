@@ -34,8 +34,8 @@ const styles = () => {
         .pipe(scss().on('error', scss.logError))
         .pipe(preFixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true}))
         .pipe(combineMedia())
-        // .pipe(cssnano())
-        // .pipe(rename({suffix: '.min'}))
+        .pipe(cssnano())
+        .pipe(rename({suffix: '.min'}))
         .pipe(dest("dist/css"))
         .pipe(reload({stream: true}));
 };
@@ -114,16 +114,16 @@ exports.server = server;
 * watcher
 * */
 const watcher = async () => {
-    watch("src/*.html").on('change', series(html));
-    watch("src/templates/**/*.html").on('change', series(html));
-    watch("src/scss/**/*.+(scss|sass)").on('change', series(styles));
-    watch("src/js/**/*.js").on('change', series(scripts));
+    watch("src/*.html", html);
+    watch("src/templates/**/*.html", html);
+    watch("src/scss/**/*.+(scss|sass)", styles);
+    watch("src/js/**/*.js", scripts);
 
-    watch("src/libs/css/**/*.css").on('change', series(styleLib));
-    watch("src/libs/js/**/*.js").on('change', series(scriptLib));
+    watch("src/libs/css/**/*.css", styleLib);
+    watch("src/libs/js/**/*.js", scriptLib);
 
-    watch("src/fonts/**/*").on('change', series(fonts));
-    watch("src/img/**/*").on('change', series(img));
+    watch("src/fonts/**/*", fonts);
+    watch("src/img/**/*", img);
 };
 exports.watcher = watcher;
 
@@ -140,5 +140,11 @@ exports.dev = series(
     parallel(html, styles, styleLib, fonts, img, scripts, scriptLib),
     watcher,
     server
+);
+
+
+exports.wp = series(
+    parallel(styles, styleLib, scriptLib),
+    watcher
 );
 
