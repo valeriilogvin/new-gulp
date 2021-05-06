@@ -114,16 +114,16 @@ exports.server = server;
 * watcher
 * */
 const watcher = async () => {
-    watch("src/*.html", {usePolling: true} , html);
-    watch("src/templates/**/*.html", {usePolling: true} , html);
-    watch("src/scss/**/*.+(scss|sass)", {usePolling: true} , styles);
-    watch("src/js/**/*.js", {usePolling: true} , scripts);
+    watch(["src/*.html"], {usePolling: true}, html);
+    watch(["src/templates/**/*.html"], {usePolling: true}, html);
+    watch(["src/scss/**/*.+(scss|sass)"], {usePolling: true}, styles);
+    watch(["src/js/**/*.js"], {usePolling: true}, scripts);
 
-    watch("src/libs/css/**/*.css", {usePolling: true} , styleLib);
-    watch("src/libs/js/**/*.js", {usePolling: true} , scriptLib);
+    watch(["src/libs/css/**/*.css"], {usePolling: true}, styleLib);
+    watch(["src/libs/js/**/*.js"], {usePolling: true}, scriptLib);
 
-    watch("src/fonts/**/*", {usePolling: true} , fonts);
-    watch("src/img/**/*", {usePolling: true} , img);
+    watch(["src/fonts/**/*"], {usePolling: true}, fonts);
+    watch(["src/img/**/*"], {usePolling: true}, img);
 };
 exports.watcher = watcher;
 
